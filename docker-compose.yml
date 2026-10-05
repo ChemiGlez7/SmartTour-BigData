@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+
+  jupyter:
+    image: jupyter/scipy-notebook
+    container_name: smarttour-jupyter
+    ports:
+      - "8888:8888"
+
+    volumes:
+      - ./notebooks:/home/jovyan/work
+      - ./datasets:/home/jovyan/datasets
+
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+
+    command:
+      start-notebook.sh
+      --NotebookApp.token=''
